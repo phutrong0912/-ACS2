@@ -79,7 +79,9 @@ public class AdminController {
 
     @GetMapping("/danh-muc")
     public String category(Model m) {
-        m.addAttribute("categorys", categoryService.getAllCategory().reversed());
+        List<Category> categories = categoryService.getAllCategory();
+        Collections.reverse(categories);
+        m.addAttribute("categorys", categories);
         return "admin/category";
     }
 
@@ -167,7 +169,9 @@ public class AdminController {
 
     @GetMapping("/thuong-hieu")
     public String brand(Model m) {
-        m.addAttribute("brands", brandService.getAllBrand().reversed());
+        List<Brand> brands = brandService.getAllBrand();
+        Collections.reverse(brands);
+        m.addAttribute("brands", brands);
         return "admin/brand";
     }
 

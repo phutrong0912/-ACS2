@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.text.NumberFormat;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -356,7 +357,9 @@ public class ApiController {
 
     @GetMapping("getSupportUrl")
     public List<SupportUrl> getSupportUrl() {
-        return supportUrlService.getSupportUrl().reversed();
+        List<SupportUrl> supportUrls = supportUrlService.getSupportUrl();
+        Collections.reverse(supportUrls);
+        return supportUrls;
     }
 
     @PostMapping("/addSupportUrl")

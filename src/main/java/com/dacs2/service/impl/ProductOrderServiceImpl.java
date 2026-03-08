@@ -6,6 +6,7 @@ import com.dacs2.service.ProductOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,6 +17,8 @@ public class ProductOrderServiceImpl implements ProductOrderService {
 
     @Override
     public List<ProductOrder> getProductOrdersIsRated() {
-        return productOrderRepository.findByRatingIsNotNull().reversed();
+        List<ProductOrder> productOrders = productOrderRepository.findByRatingIsNotNull();
+        Collections.reverse(productOrders);
+        return productOrders;
     }
 }

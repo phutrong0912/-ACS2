@@ -119,7 +119,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Orders> getOrdersByUserId(Integer userId) {
-        return orderRepository.findByUserIdAndProcessed(userId, true).reversed();
+        List<Orders> orders = orderRepository.findByUserIdAndProcessed(userId, true);
+        Collections.reverse(orders);
+        return orders;
     }
 
     @Override

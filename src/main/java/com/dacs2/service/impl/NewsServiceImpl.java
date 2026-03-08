@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -68,7 +69,9 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public List<News> getNewsByStyle(String style) {
-        return newsRepository.findByStyleAndStatus(style, true).reversed();
+        List<News> newsList = newsRepository.findByStyleAndStatus(style, true);
+        Collections.reverse(newsList);
+        return newsList;
     }
 
     @Override

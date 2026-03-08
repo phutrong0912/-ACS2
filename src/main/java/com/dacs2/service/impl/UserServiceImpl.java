@@ -113,7 +113,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean unlockAccountTimeExpired(UserDtls user) {
         long lockTime = user.getLockTime().getTime();
-        long unlockTime = lockTime + AppConstant.UNLOCK_DURATION_TIME;
+        long unlockTime = lockTime + AppConstant.UNLOCK_DURATION_TIME.toMillis();
 
         long currentTime = System.currentTimeMillis();
 
